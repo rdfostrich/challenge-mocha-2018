@@ -1,0 +1,31 @@
+plugins {
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
+  id 'java'
+  id 'idea'
+}
+
+version = "1.0.0"
+group = "org.rdfostrich.hobbit.mocha.versioning"
+archivesBaseName = "OstrichHobbitMochaVersioningAdapter"
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven {
+        name "University Leipzig, AKSW Maven2 Repository"
+        url "http://maven.aksw.org/repository/internal"
+    }
+    maven {
+        name "University Leipzig, AKSW Maven2 Snapshots Repository"
+        url "http://maven.aksw.org/repository/snapshots"
+    }
+}
+
+dependencies {
+    shadow group: 'com.rabbitmq', name: 'amqp-client', version: '3.6.0'
+    shadow group: 'org.hobbit', name: 'core', version: '1.0.8'
+    shadow group: 'org.aksw.jena-sparql-api', name: 'jena-sparql-api-core', version: '3.1.0-2-SNAPSHOT'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
