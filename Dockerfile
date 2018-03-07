@@ -21,7 +21,7 @@ RUN export cmake="/opt/bin/cmake" && cd /ostrich/ingester && npm install --unsaf
 
 # Fetch comunica-ostrich from GitHub
 RUN git clone -n https://github.com/comunica/comunica.git /ostrich/comunica && cd /ostrich/comunica && git checkout b03d1735ddd5e24bcad15d036e746f645f330af7
-RUN cd /ostrich/comunica && npm install
+RUN cd /ostrich/comunica && npm install --unsafe-perm
 
 # Add pre-compiled HOBBIT system adapter
 ADD build/libs/OstrichHobbitMochaVersioningAdapter-1.0.0-all.jar /ostrich/ostrich-1.0.0.jar
