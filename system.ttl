@@ -1,8 +1,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hobbit: <http://w3id.org/hobbit/vocab#> .
+@prefix mocha: <https://project-hobbit.eu/challenges/> .
 
 <https://git.project-hobbit.eu/ruben.taelman/mocha-3-ostrich> a hobbit:SystemInstance;
     rdfs:label "OSTRICH MOCHA Versioning System Adapter"@en;
     rdfs:comment "OSTRICH System Adapter for the MOCHA Versioning challenge in the HOBBIT platform"@en;
-    hobbit:imageName "ruben.taelman/mocha-3-ostrich";
-    hobbit:implementsAPI <http://w3id.org/hobbit/versioning-benchmark/vocab#VersioningBenchmarkV2> .
+    hobbit:imageName "git.project-hobbit.eu:4567/ruben.taelman/mocha-3-ostrich:latest";
+    hobbit:implementsAPI <http://w3id.org/hobbit/versioning-benchmark/vocab#VersioningBenchmarkV2>, mocha:MOCHA2017-API.
