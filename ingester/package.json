@@ -1,0 +1,10 @@
+{
+  "name": "ingester",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "n3": "^0.11.2",
+    "ostrich-bindings": "^1.2.0"
+  }
+}
