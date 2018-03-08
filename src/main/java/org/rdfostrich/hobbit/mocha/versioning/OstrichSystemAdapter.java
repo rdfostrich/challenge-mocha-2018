@@ -30,7 +30,7 @@ public class OstrichSystemAdapter extends VersionedSystemAdapter {
     private static final String COMUNICA_CONTEXT = "{ \"sources\": [{ \"type\": \"ostrichFile\", \"value\" : \"" + OSTRICH_STORE_FOLDER + "\" }]}";
 
     public OstrichSystemAdapter() {
-        super(DATA_FOLDER, OSTRICH_STORE_FOLDER, ENDPOINT);
+        super(DATA_FOLDER, ENDPOINT);
     }
 
     @Override
