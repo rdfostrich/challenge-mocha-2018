@@ -81,7 +81,7 @@ public class OstrichSystemAdapterTests {
 
         Process p = OstrichSystemAdapter.initializeQueryEndpoint(COMUNICA_HTTP_BIN, COMUNICA_CONTEXT, COMUNICA_CONFIG_OSTRICH);
 
-        Query query = QueryFactory.create("SELECT * WHERE { GRAPH <http://graph.version.0> { ?s ?p ?o } }");
+        Query query = QueryFactory.create("SELECT * FROM <http://graph.version.0> WHERE { ?s ?p ?o }");
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService(ENDPOINT, query);
         ResultSet results = queryExecution.execSelect();
 
