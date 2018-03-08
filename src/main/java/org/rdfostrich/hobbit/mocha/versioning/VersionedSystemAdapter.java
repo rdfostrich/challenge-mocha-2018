@@ -131,15 +131,17 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
             }
 
             ByteArrayOutputStream queryResponseBos = new ByteArrayOutputStream();
-            ResultSetFormatter.outputAsJSON(queryResponseBos, rs);
+            if (rs != null) {
+                ResultSetFormatter.outputAsJSON(queryResponseBos, rs);
+                LOGGER.info("Results: " + rs.getRowNumber());
+                LOGGER.info("Task " + taskId + " executed successfully.");
+            }
             byte[] results = queryResponseBos.toByteArray();
-            LOGGER.info("Task " + taskId + " executed successfully.");
-            LOGGER.info("Results: " + rs.getRowNumber());
             qexec.close();
 
             try {
                 sendResultToEvalStorage(taskId, results);
-                LOGGER.info("Results sent to evaluation storage.");
+                LOGGER.info("Results sent to evaluation storage for task " + taskId);
             } catch (IOException e) {
                 LOGGER.error("Exception while sending storage space cost to evaluation storage.", e);
             }
