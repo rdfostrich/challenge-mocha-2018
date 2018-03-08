@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -135,6 +136,14 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
                 ResultSetFormatter.outputAsJSON(queryResponseBos, rs);
                 LOGGER.info("Results: " + rs.getRowNumber());
                 LOGGER.info("Task " + taskId + " executed successfully.");
+            } else {
+                // Write an empty response so that the evaluation storage doesn't crash
+                String emptyResponse = "{\"head\": {\"vars\":[]},\n\"results\": { \"bindings\": [] }}";
+                try {
+                    queryResponseBos.write(emptyResponse.getBytes(StandardCharsets.UTF_8));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             byte[] results = queryResponseBos.toByteArray();
             qexec.close();
