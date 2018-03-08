@@ -106,6 +106,16 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
         if(dataLoadingFinished) {
             LOGGER.info("Task " + taskId + " received from task generator");
 
+            if (this.endpointProcess == null) {
+                // Start query endpoint
+                LOGGER.info("Query endpoint was not running yet, starting...");
+                try {
+                    this.endpointProcess = initializeQueryEndpoint();
+                } catch (IOException | InterruptedException e) {
+                    LOGGER.error("Could not start query endpoint.", e);
+                }
+            }
+
             // read the query
             ByteBuffer buffer = ByteBuffer.wrap(data);
             String queryText = RabbitMQUtils.readString(buffer);
@@ -173,13 +183,6 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
                 sendToCmdQueue(BULK_LOADING_DATA_FINISHED);
             } catch (IOException e) {
                 LOGGER.error("Exception while sending signal that all data of version " + currentVersion + " successfully loaded.", e);
-            }
-
-            // Start query endpoint
-            try {
-                this.endpointProcess = initializeQueryEndpoint();
-            } catch (IOException | InterruptedException e) {
-                LOGGER.error("Could not start query endpoint.", e);
             }
 
             // Cleanup temp files
