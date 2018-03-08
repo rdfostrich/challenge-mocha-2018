@@ -55,7 +55,12 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
     @Override
     public void init() throws Exception {
         LOGGER.info("Initializing Versioned System Adapter...");
-        super.init();
+        try {
+            super.init();
+        } catch (Exception e) {
+            LOGGER.info("Error while initializing", e);
+            throw e;
+        }
 
         // Initialize file storage
         new File(tempDataFolder).mkdir();
