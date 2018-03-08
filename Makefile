@@ -1,5 +1,6 @@
 default: build dockerize
 
+.PHONY: build
 build:
 	./gradlew shadowJar
 
