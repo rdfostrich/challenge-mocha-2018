@@ -23,9 +23,9 @@ repositories {
 }
 
 dependencies {
-    shadow group: 'com.rabbitmq', name: 'amqp-client', version: '3.6.0'
-    shadow group: 'org.hobbit', name: 'core', version: '1.0.8'
-    shadow group: 'org.aksw.jena-sparql-api', name: 'jena-sparql-api-core', version: '3.1.0-2-SNAPSHOT'
+    compile group: 'com.rabbitmq', name: 'amqp-client', version: '3.6.0'
+    compile group: 'org.hobbit', name: 'core', version: '1.0.8'
+    compile group: 'org.aksw.jena-sparql-api', name: 'jena-sparql-api-core', version: '3.1.0-2-SNAPSHOT'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
