@@ -20,7 +20,7 @@ ADD ingester/* /ostrich/ingester/
 RUN export cmake="/opt/bin/cmake" && cd /ostrich/ingester && npm install --unsafe-perm
 
 # Fetch comunica-ostrich from GitHub
-RUN git clone -n https://github.com/comunica/comunica.git /ostrich/comunica && cd /ostrich/comunica && git checkout 3abcc02f259ef4c20505f29785772299d933b892
+RUN git clone -n https://github.com/comunica/comunica.git /ostrich/comunica && cd /ostrich/comunica && git checkout 14e7291230196abf27265184202918dc1cf2eaa4
 RUN cd /ostrich/comunica && npm install --unsafe-perm
 
 # Add pre-compiled HOBBIT system adapter
