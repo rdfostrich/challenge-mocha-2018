@@ -28,4 +28,4 @@ ADD build/libs/OstrichHobbitMochaVersioningAdapter-1.0.0-all.jar /ostrich/ostric
 
 WORKDIR /ostrich
 
-CMD java -cp example.jar org.hobbit.core.run.ComponentStarter org.rdfostrich.hobbit.mocha.versioning.OstrichSystemAdapter
+CMD java -cp ostrich-1.0.0.jar org.hobbit.core.run.ComponentStarter org.rdfostrich.hobbit.mocha.versioning.OstrichSystemAdapter
