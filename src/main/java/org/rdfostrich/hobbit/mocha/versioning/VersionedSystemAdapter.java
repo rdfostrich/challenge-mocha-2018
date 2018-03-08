@@ -149,7 +149,7 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
 
             // if all data have been received before BULK_LOAD_DATA_GEN_FINISHED command received
             // release before acquire, so it can immediately proceed to bulk loading
-            if (dataReceived.incrementAndGet() == dataSent.get()) {
+            if(dataReceived.get() == dataSent.addAndGet(numberOfMessages)) {
                 dataReceive.release();
             }
 
@@ -163,6 +163,7 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
             LOGGER.info("All data of version " + currentVersion + " received. Proceed to the loading of such version.");
             try {
                 loadVersion(currentVersion, tempDataFolder);
+                LOGGER.info("Successfully loaded version " + currentVersion + ".");
             } catch (IOException | InterruptedException e) {
                 LOGGER.error("Error while loading version " + currentVersion + ".", e);
             }
