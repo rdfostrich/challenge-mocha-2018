@@ -57,8 +57,8 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
         LOGGER.info("Initializing Versioned System Adapter...");
         try {
             super.init();
-        } catch (Exception e) {
-            LOGGER.info("Error while initializing", e);
+        } catch (Throwable e) {
+            LOGGER.error("Error while initializing", e);
             throw e;
         }
 
