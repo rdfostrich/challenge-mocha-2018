@@ -1,7 +1,9 @@
 package org.rdfostrich.hobbit.mocha.versioning;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.query.*;
 import org.hobbit.core.components.AbstractSystemAdapter;
@@ -14,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -58,7 +61,7 @@ public abstract class VersionedSystemAdapter extends AbstractSystemAdapter {
         try {
             super.init();
         } catch (Throwable e) {
-            LOGGER.error("Error while initializing", e);
+            LOGGER.error("Error while initializing: " + Lists.newArrayList(e.getStackTrace()));
             throw e;
         }
 
