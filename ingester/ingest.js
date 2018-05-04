@@ -30,7 +30,7 @@ function openStore(path) {
 
 function ingestVersion(store, version, baseDir) {
     return new Promise(async (resolve, reject) => {
-        store.appendSorted(version, await readVersion(version, baseDir), (error, insertedCount) => {
+        store.append(version, await readVersion(version, baseDir), (error, insertedCount) => {
             if (error) {
                 reject(error);
             } else {
